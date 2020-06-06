@@ -1,0 +1,14 @@
+{
+    "enviromentURL":{
+        "apiURL": "http://172.16.2.227:8092/",
+        "apiInterfazPagos": "ApiInterfazPagos/",
+        "apiInterfazPagosReserva": "ApiInterfazPagosreserva/",
+        "apiPasarelaPagos": "https://desarrollo.ccb.org.co/PasarelaPagos/ResumenPago?"
+    },
+    "authVariable":{
+        "userName": "payment-interface",
+        "password": "ZXJfbmFtZSI6",
+        "grant_type" : "password",
+        "client_origin" : "0"
+    }
+}

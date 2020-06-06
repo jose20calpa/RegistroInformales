@@ -8,10 +8,11 @@
         $wz-color-circle-background: #48ae4d;
         $wz-color-default: #8f8f8f;
         $wz-steps-size: 70%;
-        // @font-face {
-        //     font-family: "CorisandeRegular";
-        //     src: url("assets/fonts/CorisandeRegular.woff") format("woff");
-        // }
+        @font-face {
+            font-family: "CorisandeRegular";
+            src: url("assets/fonts/CorisandeRegular.woff") format("woff");
+        }
+        
         .horizontal .large-filled-symbols {
             padding-left: 23%;
             background: #e6e6e6;
@@ -158,6 +159,7 @@
             border: solid 1px;
             border-color: #00507D;
             color: #00507D;
+            
         }
         
         button:focus {
@@ -167,8 +169,10 @@
         .btn-flat-form {
             margin-bottom: 4%;
             margin-top: 1%;
-            width: 35%;
+            width: 35%;            
         }
+
+        
         
         @import "archwizard.scss";
         @import "variables.scss";
