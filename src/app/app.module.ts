@@ -3,14 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TituloComponent } from './Components/titulo/titulo.component';
+//externos
+import { ArchwizardModule } from 'angular-archwizard';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TituloComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ArchwizardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WizardComponent } from 'angular-archwizard';
 
 @Component({
   selector: 'app-root',

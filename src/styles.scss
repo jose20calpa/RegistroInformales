@@ -1,1 +1,174 @@
-/* You can add global styles to this file, and also import other style files */
+        /* You can add global styles to this file, and also import other style files */
+        
+        $border-color: #8f8f8f;
+        $wz-color-current: #a8d2a2;
+        $wz-color-current-text: #8f8f8f !global;
+        $wz-color-editing: #a8d2a2;
+        $wz-color-done: #8f8f8f;
+        $wz-color-circle-background: #48ae4d;
+        $wz-color-default: #8f8f8f;
+        $wz-steps-size: 70%;
+        // @font-face {
+        //     font-family: "CorisandeRegular";
+        //     src: url("assets/fonts/CorisandeRegular.woff") format("woff");
+        // }
+        .horizontal .large-filled-symbols {
+            padding-left: 23%;
+            background: #e6e6e6;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            aw-wizard-navigation-bar.horizontal ul.steps-indicator {
+                width: 100% !important;
+            }
+            .horizontal .large-filled-symbols {
+                padding-left: 0;
+            }
+            .ng-sidebar--right {
+                width: 70% !important;
+            }
+        }
+        
+        body {
+            font-family: CorisandeRegular;
+            //background: #f8f8f8;
+        }
+        
+        .ng-sidebar--right {
+            color: grey !important;
+            background: #202221;
+            width: 12rem;
+            z-index: 9000 !important;
+            height: 100%;
+            width: 25%;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+        
+        .ng-sidebar--right>ul>li {
+            list-style-type: none;
+            list-style-position: inside;
+            border-top: 0.5px solid white;
+        }
+        
+        .ng-sidebar--right>ul>li:hover {
+            color: white;
+        }
+        /*nuevo*/
+        
+        .navbar-toggles {
+            z-index: 2;
+            position: absolute;
+            margin-top: 1%;
+            margin-left: 80%;
+            background-color: transparent;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #8f8f8f;
+            text-transform: uppercase;
+        }
+        
+        .navbar-toggles:hover {
+            background-color: #e6e6e6;
+        }
+        
+        .navbar-toggles>ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar-toggles>ul>li {
+            list-style-type: none;
+            margin: 0;
+            font-size: 12px;
+        }
+        
+        .img-thumbnail {
+            border: none;
+            border-radius: 0;
+            border-right: 1px solid gray;
+            width: 70%;
+        }
+        
+        .vue-container {
+            margin: 0 auto;
+            max-width: 1140px;
+            box-sizing: content-box !important;
+            padding: 0 20px;
+        }
+        
+        .ng-sidebar>i {
+            position: absolute !important;
+            margin-top: 20px !important;
+        }
+        
+        .ng-sidebar>i:hover {
+            color: white;
+        }
+        /* Header */
+        
+        #vue-header {
+            z-index: -1;
+            position: relative;
+            background: #fff;
+        }
+        
+        #vue-header .vue-container {
+            display: flex;
+            align-items: stretch;
+            position: relative;
+        }
+        
+        #vue-header .vue-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 50%;
+            max-width: 450px;
+        }
+        
+        #vue-header .vue-logo {
+            max-width: 216px;
+            width: 59%;
+            padding: 4px 9px 8px 0px;
+            box-sizing: border-box;
+            background: white;
+            position: relative;
+            align-items: center;
+            display: flex;
+            //border-right: 1px solid #9A9B9E;
+        }
+        
+        .descripcionAdicional {
+            margin: 2%;
+            margin-left: 0;
+        }
+        
+        .ItemSidebar {
+            font-size: 20px;
+        }
+        
+        .btn-flat {
+            padding-left: 1%;
+            padding-right: 1%;
+            padding-top: 0;
+            padding-bottom: 0;
+            border: solid 1px;
+            border-color: #00507D;
+            color: #00507D;
+        }
+        
+        button:focus {
+            outline: 0;
+        }
+        
+        .btn-flat-form {
+            margin-bottom: 4%;
+            margin-top: 1%;
+            width: 35%;
+        }
+        
+        @import "archwizard.scss";
+        @import "variables.scss";
