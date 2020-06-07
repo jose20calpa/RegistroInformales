@@ -1,14 +1,454 @@
 {
-    "enviromentURL":{
-        "apiURL": "http://172.16.2.227:8092/",
-        "apiInterfazPagos": "ApiInterfazPagos/",
-        "apiInterfazPagosReserva": "ApiInterfazPagosreserva/",
-        "apiPasarelaPagos": "https://desarrollo.ccb.org.co/PasarelaPagos/ResumenPago?"
-    },
-    "authVariable":{
-        "userName": "payment-interface",
-        "password": "ZXJfbmFtZSI6",
-        "grant_type" : "password",
-        "client_origin" : "0"
-    }
+
+    "id": 1,
+
+    "title": "Reactivacion Economica",
+
+    "sections": [
+
+        {
+
+            "id": 1,
+
+            "title": "Datos Personales",
+
+            "questions": [
+
+                {
+
+                    "id": 1,
+
+                    "statement": "Primer Nombre",
+
+                    "componentType": "input",
+
+                    "dataType": "text",
+
+                    "required": true,
+
+                    "answer": "Alejandro",
+
+                    "options": []                    
+                },
+
+                {
+
+                    "id": 2,
+
+                    "statement": "Segundo Nombre",
+
+                    "componentType": "input",
+
+                    "dataType": "text",
+
+                    "required": false,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 3,
+
+                    "statement": "Primer Apellido",
+
+                    "componentType": "input",
+
+                    "dataType": "text",
+
+                    "required": true,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 4,
+
+                    "statement": "Segundo Apellido",
+
+                    "componentType": "input",
+
+                    "dataType": "text",
+
+                    "required": false,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 5,
+
+                    "statement": "Edad",
+
+                    "componentType": "input",
+
+                    "dataType": "number",
+
+                    "required": true,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 6,
+
+                    "statement": "Celular",
+
+                    "componentType": "input",
+
+                    "dataType": "number",
+
+                    "required": true,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 7,
+
+                    "statement": "Correo Electronico",
+
+                    "componentType": "input",
+
+                    "dataType": "text",
+
+                    "required": false,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 8,
+
+                    "statement": "¿El correo electronico es usado en Facebook?",
+
+                    "componentType": "radio",
+
+                    "dataType": "na",
+
+                    "required": false,
+
+                    "options": [
+
+                        {
+
+                            "id": 1,
+
+                            "val": "Si"
+
+                        },
+
+                        {
+
+                            "id": 2,
+
+                            "val": "No"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "id": 9,
+
+                    "statement": "Municipio",
+
+                    "componentType": "locate",
+
+                    "dataType": "na",
+
+                    "required": true,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 10,
+
+                    "statement": "Direccion Residencia",
+
+                    "componentType": "input",
+
+                    "dataType": "text",
+
+                    "required": true,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 11,
+
+                    "statement": "Estrato",
+
+                    "componentType": "list",
+
+                    "dataType": "na",
+
+                    "required": true,
+
+                    "options": [
+
+                        {
+
+                            "id": 3,
+
+                            "val": "1"
+
+                        },
+
+                        {
+
+                            "id": 4,
+
+                            "val": "2"
+
+                        },
+
+                        {
+
+                            "id": 5,
+
+                            "val": "3"
+
+                        },
+
+                        {
+
+                            "id": 6,
+
+                            "val": "4"
+
+                        },
+
+                        {
+
+                            "id": 7,
+
+                            "val": "5"
+
+                        },
+
+                        {
+
+                            "id": 8,
+
+                            "val": "6"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "id": 12,
+
+                    "statement": "Dirección donde realiza su actividad",
+
+                    "componentType": "input",
+
+                    "dataType": "text",
+
+                    "required": true,
+
+                    "options": []
+
+                },
+
+                {
+
+                    "id": 13,
+
+                    "statement": "Ubicacion del Negocio",
+
+                    "componentType": "radio",
+
+                    "dataType": "na",
+
+                    "required": false,
+
+                    "options": [
+
+                        {
+
+                            "id": 9,
+
+                            "val": "Cabecera Urbana"
+
+                        },
+
+                        {
+
+                            "id": 10,
+
+                            "val": "Zona Rural"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "id": 14,
+
+                    "statement": "¿Es usted madre cabeza de hogar?",
+
+                    "componentType": "radio",
+
+                    "dataType": "na",
+
+                    "required": false,
+
+                    "options": [
+
+                        {
+
+                            "id": 11,
+
+                            "val": "Si"
+
+                        },
+
+                        {
+
+                            "id": 12,
+
+                            "val": "No"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "id": 15,
+
+                    "statement": "Estado Civil",
+
+                    "componentType": "radio",
+
+                    "dataType": "na",
+
+                    "required": true,
+
+                    "options": [
+
+                        {
+
+                            "id": 13,
+
+                            "val": "Soltero(a)"
+
+                        },
+
+                        {
+
+                            "id": 14,
+
+                            "val": "Casado(a)"
+
+                        },
+
+                        {
+
+                            "id": 15,
+
+                            "val": "Separado(a)"
+
+                        },
+
+                        {
+
+                            "id": 16,
+
+                            "val": "Union Libre"
+
+                        },
+
+                        {
+
+                            "id": 17,
+
+                            "val": "Viudo(a)"
+
+                        }
+
+                    ]
+
+                }
+
+            ]
+
+        },
+
+        {
+
+            "id": 2,
+
+            "title": "Información Adicional del Ciudadano",
+
+            "questions": [ {
+
+                "id": 1,
+
+                "statement": "Otro componente",
+
+                "componentType": "input",
+
+                "dataType": "text",
+
+                "required": true,
+
+                "options": []
+
+            }]
+
+        },
+
+        {
+
+            "id": 3,
+
+            "title": "Caracterización del Negocio",
+
+            "questions": []
+
+        },
+
+        {
+
+            "id": 4,
+
+            "title": "Información Comercial y Financiera del Negocio",
+
+            "questions": []
+
+        }
+
+    ]
+
 }

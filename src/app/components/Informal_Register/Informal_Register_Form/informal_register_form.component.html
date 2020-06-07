@@ -1,49 +1,44 @@
 <ng-sidebar-container style="height: 100vh; z-index: 1000 !important; " scrollTracker>
     <div ng-sidebar-content>
         <app-header></app-header>
-
         <aw-wizard [awNavigationMode] navigateForward="visited" navBarLayout="large-filled-symbols">
-            <aw-wizard-step (stepEnter)="avanzarStep(0)">
-                <ng-template awWizardStepSymbol>
-                    <i [ngClass]="{'fas fa-circle':paso==0}"></i>
-                </ng-template>
-                <ng-template awWizardStepTitle>
-                    <span class="hidden-sm-down">LIQUIDACIÓN</span>
-                </ng-template>
-                <div class="container">
 
+            <aw-wizard-step *ngFor="let section of formRI.sections; let first = first;">
 
-                   
-                    <br>
-                    <div class="container">
-
-                    </div>
-
-                    <br>
-
-                </div>
-
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="PAGADOR" (stepEnter)="avanzarStep(1)">
-                <ng-template awWizardStepSymbol>
-                    <i [ngClass]="{'fas fa-circle':paso==1}"></i>
-                </ng-template>
-                <div class="container">
-                    <div class="container">                        
-                    </div>
-                    <button class="btn btn-rounded btn-flat" awPreviousStep><i
-                            class="fas fa-angle-left fa-3x"></i></button>Atrás
-                </div>
-            </aw-wizard-step>
-            <aw-wizard-step stepTitle="PARTICIPANTES" (stepEnter)="avanzarStep(2)">
                 <ng-template awWizardStepSymbol>
                     <i [ngClass]="{'fas fa-circle':paso==2}"></i>
                 </ng-template>
-                <div class="container">                                       
-                    <button class="btn btn-rounded btn-flat" awPreviousStep><i
-                        class="fas fa-angle-left fa-3x"></i></button>Atrás
+                <ng-template awWizardStepTitle>
+                    <span class="hidden-sm-down">{{section.title}}</span>
+                </ng-template>
+
+                <div class="container">
+                    <app-section [questions]="section.questions" [idFinalSection]="formRI.sections.length"></app-section>
+                    <br /><br />
+
+                    <div class="btn-group">
+                        <button class="btn btn-rounded btn-flat" awPreviousStep *ngIf="!first"><i
+                            class="fas fa-angle-left fa-3x"></i></button>
+                    </div>
                 </div>
             </aw-wizard-step>
+
+
+            <!--                 <aw-wizard-step *ngFor="let section of formRI.sections" stepTitle="{{section.title}}">
+                    <ng-template awWizardStepSymbol>
+                        <i [ngClass]="{'fas fa-circle':paso==1}"></i>
+                    </ng-template>
+                    <div class="container">
+                        <div class="container">
+                           <app-section [questions]="section.questions"></app-section> 
+                        </div>
+                        <button class="btn btn-rounded btn-flat" awPreviousStep><i
+                                class="fas fa-angle-left fa-3x"></i></button>Atrás
+                    </div>
+                </aw-wizard-step> -->
+
+
+
         </aw-wizard>
         <app-footer></app-footer>
 

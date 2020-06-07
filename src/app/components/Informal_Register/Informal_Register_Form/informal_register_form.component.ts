@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormIRServiceService } from 'src/app/services/form-irservice.service';
+import { FormRI } from 'src/app/models/form-ri';
 
 
 @Component({
@@ -7,20 +9,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./informal_register_form.component.scss']
 })
 export class InformalRegisterFormComponent implements OnInit {  
-  paso = 0;
-  _opened = false;
-  constructor(){
+
+  formRI:FormRI;
+  loaded = false;
+
+  constructor(private formIRService:FormIRServiceService){
     
   }
  
   ngOnInit(): void {
+    this.getForm();
   }
  
- 
-  
-
-  _toggleSidebar() {
-    this._opened = !this._opened;
+  public getForm(){
+    this.formIRService.getFormIR().subscribe(
+      (res: FormRI) => {
+        this.formRI = res;
+        this.loaded = true;
+      },
+      err => {
+        console.log("Ha ocurrido un error intente mas tarde");
+        //this.showDialog('Error', 'Ha ocurrido un error intentelo mas tarde', false);
+      }
+    );;
   }
 
 

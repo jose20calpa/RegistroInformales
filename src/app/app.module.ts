@@ -22,6 +22,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
+import { SectionComponent } from './components/Informal_Register/section/section.component';
 registerLocaleData(locales);
 
 
@@ -35,6 +36,7 @@ registerLocaleData(locales);
     NotfoundComponent,
     InformalRegisterFormComponent,
     ErrorComponent,
+    SectionComponent,
 
   ],
   imports: [

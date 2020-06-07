@@ -1,0 +1,54 @@
+<div class="container ">
+    <form #formPayer="ngForm">
+        <div class="form-group">
+            <div class="row" *ngFor="let question of questions">
+                <div [ngSwitch]="question.componentType" class="col-sm-12"
+                    [ngClass]="{ 'has-error': formPayer.submitted  }">
+                    <label>{{question.statement}}</label>
+                    <div *ngSwitchCase="'input'">
+                        <input name="{{question.id}}" class="form-control" type="{{question.dataType}}"
+                            [(ngModel)]="question.answer" #answer="ngModel" [required]="question.required" />
+                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                            class="alert alert-danger">
+                            Este campo es obligatorio
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'list'">
+                        <select class="form-control" name="{{question.id}}" [(ngModel)]="question.answer"
+                            #answer="ngModel" [required]="question.required">
+                            <option empty-option="" value="undefined" class="">Seleccionar</option>
+                            <option *ngFor="let option of question.options" value="{{option.id}}">
+                                {{option.val}}</option>
+                        </select>
+                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                            class="alert alert-danger">
+                            Este campo es obligatorio
+                        </div>
+
+                    </div>
+                    <div *ngSwitchCase="'radio'">
+                        <div *ngFor="let option of question.options; let last = last">
+                            <input id="{{option.id}}" type="radio" value="{{option.id}}" name="{{question.id}}"
+                                [(ngModel)]="question.answer" #answer="ngModel" [required]="question.required" />
+                            <label for="option.id">{{option.val}}</label>
+                            <div *ngIf="last">
+                                <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                                    class="alert alert-danger">
+                                    Este campo es obligatorio
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-rounded btn-flat" (click)="submit(formPayer)">Guardar
+                        información </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

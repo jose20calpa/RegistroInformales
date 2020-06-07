@@ -6,5 +6,6 @@ export interface Question {
     componentType: string;
     dataType: string;
     required: boolean;
-    options: Option[];
+    answer: string;
+    options: Option[];    
 }
