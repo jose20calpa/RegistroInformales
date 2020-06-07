@@ -1,7 +1,15 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://25.4.17.139:10000'
+
+  apiUrl :'http://25.4.17.139:10000',
+  auth: {
+    token: '/security'
+  },
+  domainList: {
+    specialities: '/specialities'
+  }
+
 };
 
 

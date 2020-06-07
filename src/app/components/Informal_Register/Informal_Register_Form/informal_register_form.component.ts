@@ -5,7 +5,8 @@ import { Department } from 'src/app/models/Department';
 import { Municipality } from 'src/app/models/Municipality';
 import { DepartmentService } from 'src/app/services/department.service';
 import { MunicipalityService } from 'src/app/services/municipality.service';
-
+import { CityService } from '../../../services/city.service';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
   selector: 'app-payment-interface',
@@ -17,16 +18,21 @@ export class InformalRegisterFormComponent implements OnInit {
   formRI: FormRI;
   departments: Department[];
   municipalities: Municipality[];
+  paso = 0;
+  _opened = false;
+  cityList: Array<any>;
   constructor(private formIRService: FormIRServiceService,
     private deparmentService: DepartmentService,
-    private municipalityService: MunicipalityService) {
+    private municipalityService: MunicipalityService,
+    private CommonService: CommonService) {
 
   }
+
 
   ngOnInit(): void {
     this.getDepartments();
     this.getMunicipalities();
-    this.getForm();   
+    this.getFormRIs();  
   }
 
   public getForm() {
@@ -36,7 +42,6 @@ export class InformalRegisterFormComponent implements OnInit {
       },
       err => {
         console.log("Ha ocurrido un error intente mas tarde");
-        //this.showDialog('Error', 'Ha ocurrido un error intentelo mas tarde', false);
       }
     );;
   }
@@ -51,6 +56,11 @@ export class InformalRegisterFormComponent implements OnInit {
         console.log("Ha ocurrido un error intente mas tarde");
       }
     )
+  }
+
+  getFormRIs() {
+    console.log('aqui form');
+    this.formRI =  this.CommonService.formRi;
   }
 
   private getMunicipalities() {

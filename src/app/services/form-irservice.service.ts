@@ -10,7 +10,7 @@ import { retry } from 'rxjs/operators';
 })
 export class FormIRServiceService {
 
-  private BASE_URL = environment.API_URL;
+  private BASE_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
   getFormIR(): Observable<FormRI> {

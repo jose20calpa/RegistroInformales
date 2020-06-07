@@ -1,4 +1,4 @@
-<ng-sidebar-container style="height: 100vh; z-index: 1000 !important; " scrollTracker>
+<ng-sidebar-container class="divformsearch" scrollTracker>
     <div ng-sidebar-content>
         <app-header></app-header>
         <aw-wizard [awNavigationMode] navigateForward="visited" navBarLayout="large-filled-symbols">
@@ -13,9 +13,7 @@
                 </ng-template>
 
                 <div class="container">
-                    <app-section (guardarEventEmitter)="guardarRespuestas()" [questions]="section.questions"
-                        [idFinalSection]="formRI.sections.length" [municipalities]="municipalities"
-                        [departments]="departments"></app-section>
+                    <app-section (guardarEventEmitter)="guardarRespuestas()" [questions]="section.questions" [idFinalSection]="formRI.sections.length" [municipalities]="municipalities" [departments]="departments"></app-section>
                     <br /><br />
 
                     <div class="btn-group">

@@ -10,7 +10,7 @@ import { Municipality } from '../models/Municipality';
 })
 export class MunicipalityService {
   
-  private BASE_URL = environment.API_URL;
+  private BASE_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
   getAllMunicipalities(): Observable<Municipality> {

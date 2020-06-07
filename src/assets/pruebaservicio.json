@@ -22,13 +22,12 @@
 
                     "componentType": "input",
 
-                    "dataType": "text",
+                    "dataType": "string",
 
                     "required": true,
 
-                    "answer": "Alejandro",
-
                     "options": []
+
                 },
 
                 {
@@ -39,9 +38,9 @@
 
                     "componentType": "input",
 
-                    "dataType": "text",
+                    "dataType": "string",
 
-                    "required": false,
+                    "required": true,
 
                     "options": []
 
@@ -55,7 +54,7 @@
 
                     "componentType": "input",
 
-                    "dataType": "text",
+                    "dataType": "string",
 
                     "required": true,
 
@@ -71,9 +70,9 @@
 
                     "componentType": "input",
 
-                    "dataType": "text",
+                    "dataType": "string",
 
-                    "required": false,
+                    "required": true,
 
                     "options": []
 
@@ -119,7 +118,7 @@
 
                     "componentType": "input",
 
-                    "dataType": "text",
+                    "dataType": "date",
 
                     "required": false,
 
@@ -185,7 +184,7 @@
 
                     "componentType": "input",
 
-                    "dataType": "text",
+                    "dataType": "string",
 
                     "required": true,
 
@@ -267,7 +266,7 @@
 
                     "componentType": "input",
 
-                    "dataType": "text",
+                    "dataType": "string",
 
                     "required": true,
 
@@ -285,7 +284,7 @@
 
                     "dataType": "na",
 
-                    "required": false,
+                    "required": true,
 
                     "options": [
 
@@ -307,7 +306,19 @@
 
                     ]
 
-                },
+                }
+
+            ]
+
+        },
+
+        {
+
+            "id": 2,
+
+            "title": "Información Adicional del Ciudadano",
+
+            "questions": [
 
                 {
 
@@ -319,7 +330,7 @@
 
                     "dataType": "na",
 
-                    "required": false,
+                    "required": true,
 
                     "options": [
 
@@ -399,33 +410,75 @@
 
                     ]
 
+                },
+
+                {
+
+                    "id": 16,
+
+                    "statement": "Pertenece a una Etnia",
+
+                    "componentType": "radio",
+
+                    "dataType": "na",
+
+                    "required": true,
+
+                    "options": [
+
+                        {
+
+                            "id": 18,
+
+                            "val": "ROM"
+
+                        },
+
+                        {
+
+                            "id": 19,
+
+                            "val": "NARP"
+
+                        },
+
+                        {
+
+                            "id": 20,
+
+                            "val": "Indigena"
+
+                        },
+
+                        {
+
+                            "id": 21,
+
+                            "val": "No Pertenezco"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "id": 17,
+
+                    "statement": "¿Cuantas personas dependen de usted?",
+
+                    "componentType": "input",
+
+                    "dataType": "number",
+
+                    "required": true,
+
+                    "options": []
+
                 }
 
             ]
-
-        },
-
-        {
-
-            "id": 2,
-
-            "title": "Información Adicional del Ciudadano",
-
-            "questions": [{
-
-                "id": 1,
-
-                "statement": "Otro componente",
-
-                "componentType": "input",
-
-                "dataType": "text",
-
-                "required": true,
-
-                "options": []
-
-            }]
 
         },
 
