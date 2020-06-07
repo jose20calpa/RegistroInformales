@@ -13,8 +13,6 @@ export class AuthorizationService {
   }
 
   authenticateApplication() {
-    console.log('marica');
-    console.log(env.auth.token);
      return this.http.get<AutenticationResponse>(this.apiEndPoint + env.auth.token);
   }
 }

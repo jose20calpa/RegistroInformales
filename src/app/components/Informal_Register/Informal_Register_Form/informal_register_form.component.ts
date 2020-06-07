@@ -5,7 +5,6 @@ import { Department } from 'src/app/models/Department';
 import { Municipality } from 'src/app/models/Municipality';
 import { DepartmentService } from 'src/app/services/department.service';
 import { MunicipalityService } from 'src/app/services/municipality.service';
-import { CityService } from '../../../services/city.service';
 import { CommonService } from '../../../services/common.service';
 
 @Component({
