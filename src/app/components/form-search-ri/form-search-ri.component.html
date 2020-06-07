@@ -11,14 +11,14 @@
                         {{tipoDoc.desc_document_type}}</option>
         
                 </select>
-            <div *ngIf="documentType.invalid  && ( documentType.touched) " class="error">
+            <div *ngIf="documentType.invalid  && ( documentType.touched || formRI.submitted) " class="error">
                 Seleccione un tipo de documento
             </div>
 
         </div>
 
         <div class="form-group">
-            <label for="documentNumber">Ingeser su numero de documento</label>
+            <label for="documentNumber">Ingrese su numero de documento</label>
             <input type="text" id="documentNumber" class="form-control" name="documentNumber" [(ngModel)]="InformalPerson.documentNumber" #documentNumber="ngModel" required minlength="5">
             <div *ngIf="documentNumber.invalid && (documentNumber.touched || formRI.submitted)" class="error">
                 *Escriba su numero de identidad
@@ -66,7 +66,7 @@
 
 
 </div>
-<ngx-spinner bdColor="rgba(244,244,244,0.7)" size="large" color="#4D87C0" type="ball-scale-multiple" zIndex="99999">
+<ngx-spinner bdColor="rgba(244,244,244,1)" size="large" color="#4D87C0" type="ball-scale-multiple" zIndex="99999">
     <p style="font-size: 20px; color:black">Un momento por favor</p>
 </ngx-spinner>
 <app-footer></app-footer>
