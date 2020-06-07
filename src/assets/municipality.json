@@ -1,0 +1,24 @@
+[
+    {
+        "id_Municipality": "1",
+        "desc_Municipality": "Bogotá" ,
+        "id_Department":"1"
+    },
+    {
+        "id_Municipality": "2",
+        "desc_Municipality": "Chipaque" ,
+        "id_Department":"1" 
+    },
+    {
+        "id_Municipality": "3",
+        "desc_Municipality": "Belén" ,
+        "id_Department":"2"
+    },
+    {
+        "id_Municipality": "4",
+        "desc_Municipality": "Boavita" ,
+        "id_Department":"2" 
+    }
+    
+    
+]

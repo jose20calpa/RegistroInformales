@@ -38,7 +38,27 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div *ngSwitchCase="'locate'">
+                        <select class="form-control" name="selectedIdDepartment" [required]="question.required"
+                            [(ngModel)]="selectedIdDepartment" #idDepartment="ngModel">
+                            <option empty-option="" value="undefined" class="">Seleccionar</option>
+                            <option *ngFor="let department of departments" value="{{department.id_department}}">
+                                {{department.desc_department}}</option>
+                        </select>
+                        <br>
+                        <select class="form-control" name="{{question.id}}" [(ngModel)]="question.answer"
+                            #answer="ngModel" [required]="question.required" [disabled]="selectedIdDepartment == null">
+                            <option empty-option="" value="undefined" class="">Seleccionar</option>
+                            <option *ngFor="let municipality of filterMunicipalities()"
+                                value="{{municipality.id_Municipality}}">
+                                {{municipality.desc_Municipality}}</option>
+                        </select>
 
+                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                            class="alert alert-danger">
+                            Este campo es obligatorio
+                        </div>
 
                     </div>
                 </div>
