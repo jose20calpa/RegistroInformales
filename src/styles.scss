@@ -88,7 +88,6 @@
         .img-thumbnail {
             border: none;
             border-radius: 0;
-            border-right: 1px solid gray;
             width: 70%;
         }
         
@@ -131,7 +130,7 @@
         }
         
         #vue-header .vue-logo {
-            max-width: 216px;
+            max-width: 50%;
             width: 59%;
             padding: 4px 9px 8px 0px;
             box-sizing: border-box;
@@ -159,7 +158,6 @@
             border: solid 1px;
             border-color: #00507D;
             color: #00507D;
-            
         }
         
         button:focus {
@@ -169,10 +167,8 @@
         .btn-flat-form {
             margin-bottom: 4%;
             margin-top: 1%;
-            width: 35%;            
+            width: 35%;
         }
-
-        
         
         @import "archwizard.scss";
         @import "variables.scss";
