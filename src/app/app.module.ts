@@ -22,6 +22,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
+import { FormSearchRIComponent } from './components/form-search-ri/form-search-ri.component';
+import { BotDetectCaptchaModule } from 'angular-captcha';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
+/*funtions */
+import {  loadToken } from './functions/app-initializer';
+import { TokenInterceptor } from './functions/TokenInterceptor';
+import { AppConfigService } from './services/app-config.service';
+
 registerLocaleData(locales);
 
 
@@ -35,6 +44,7 @@ registerLocaleData(locales);
     NotfoundComponent,
     InformalRegisterFormComponent,
     ErrorComponent,
+    FormSearchRIComponent,
 
   ],
   imports: [
@@ -47,12 +57,20 @@ registerLocaleData(locales);
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    RecaptchaModule,  //this is the recaptcha main module
+    RecaptchaFormsModule, //this is the module for form incase form validation
   ],
   entryComponents: [
     
   ],
-  providers: [    
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    { provide: APP_INITIALIZER, useFactory: loadToken, deps: [AppConfigService], multi: true },
     
   ],
   bootstrap: [AppComponent]

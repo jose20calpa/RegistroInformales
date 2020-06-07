@@ -1,0 +1,72 @@
+<app-header></app-header>
+
+<div class="container">
+
+    <form #formRI="ngForm" class="divformsearch parallax" id="formRi">
+        <div class="form-group ">
+            <label for="documentType">Tipo Identificación *</label>
+
+            <select id="documentType" name="documentType" class="form-control" required [(ngModel)]="InformalPerson.documentType" #documentType="ngModel">
+                    <option *ngFor="let tipoDoc of documentsTypeList" value="{{tipoDoc.id_document_type}}">
+                        {{tipoDoc.desc_document_type}}</option>
+        
+                </select>
+            <div *ngIf="documentType.invalid  && ( documentType.touched) " class="error">
+                Seleccione un tipo de documento
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="documentNumber">Ingeser su numero de documento</label>
+            <input type="text" id="documentNumber" class="form-control" name="documentNumber" [(ngModel)]="InformalPerson.documentNumber" #documentNumber="ngModel" required minlength="5">
+            <div *ngIf="documentNumber.invalid && (documentNumber.touched || formRI.submitted)" class="error">
+                *Escriba su numero de identidad
+            </div>
+
+        </div>
+
+        <div class="form-group ">
+            <label for="expedition">Ingrese la fecha de expedición del documento</label>
+
+
+            <div class="row">
+                <div class="col-sm-3 ">
+                    <input id="expedition" class="form-control" placeholder="yyyy-mm-dd" name="expedition" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="InformalPerson.expedition" #expedition="ngModel" required>
+
+
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+
+                </div>
+
+            </div>
+            <div *ngIf="expedition.invalid && (expedition.touched || formRI.submitted)" class="error">
+                *Seleccione una fecha
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 text-right">
+                <re-captcha (resolved)="resolved($event)" formControlName="recaptchaReactive" siteKey="6LefEgEVAAAAAMcfMfM5wmOXcASki3ihPp4MJwsc"></re-captcha>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-primary btnRI" (click)="submit(formRI)">Buscar</button>
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+</div>
+<ngx-spinner bdColor="rgba(244,244,244,0.7)" size="large" color="#4D87C0" type="ball-scale-multiple" zIndex="99999">
+    <p style="font-size: 20px; color:black">Un momento por favor</p>
+</ngx-spinner>
+<app-footer></app-footer>

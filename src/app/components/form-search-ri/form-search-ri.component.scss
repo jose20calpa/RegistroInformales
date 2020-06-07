@@ -1,0 +1,33 @@
+.divformsearch {
+    padding-top: 10pt;
+    padding-left: 20%;
+    padding-right: 20%;
+    z-index: 3;
+}
+
+.error {
+    color: red;
+}
+
+.btnRI {
+    margin-top: 10pt;
+    background-color: #4D87C0;
+    width: 20% !important;
+}
+
+@media (max-width: 500px) {
+    button {
+        display: block !important;
+    }
+    .btnRI {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .text-right {
+        text-align: center !important;
+    }
+    .divformsearch {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
