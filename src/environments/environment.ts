@@ -2,7 +2,7 @@
 
 export const environment = {
   production: false,
-  apiURL :'',
+  apiUrl :'http://pruebamock.azurewebsites.net',
   auth: {
     token: '/security'
   },

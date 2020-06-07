@@ -65,7 +65,12 @@ registerLocaleData(locales);
     
   ],
   providers: [
-    
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    { provide: APP_INITIALIZER, useFactory: loadToken, deps: [AppConfigService], multi: true },
     
   ],
   bootstrap: [AppComponent]
