@@ -1,5 +1,5 @@
 export interface InformalPerson {
-    documentType: number;
+    documentType: string;
     documentNumber: string;
-    expedition : string;
+    expedition : Date;
 }

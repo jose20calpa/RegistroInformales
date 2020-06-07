@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl :'http://pruebamock.azurewebsites.net',
+  apiUrl :'http://25.4.17.139:10000',
 
 };

@@ -4,6 +4,7 @@ import { InformalPerson } from '../models/informal-person';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 import { FormRI } from '../models/form-ri';
+import { environment as env } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { FormRI } from '../models/form-ri';
 export class InformalRegistrationService {
 
   constructor(private http: HttpClient) { }
-  private BASE_URL = 'http://pruebamock.azurewebsites.net/';
+  private BASE_URL = env.apiUrl+'/form';
   private BASE_URL2 = '/assets/pruebaservicio.json';
 
   searchInformationIP(informalPerson: InformalPerson): Observable<any> {

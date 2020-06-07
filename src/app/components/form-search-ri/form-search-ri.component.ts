@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Input, ElementRef } from '@angular/core';
 import { DocumentTypeService } from 'src/app/services/document-type.service';
 import { InformalPerson } from 'src/app/models/informal-person';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
@@ -7,6 +7,7 @@ import { InformalRegistrationService } from 'src/app/services/informal-registrat
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { FormRI } from 'src/app/models/form-ri';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-form-search-ri',
@@ -19,16 +20,20 @@ export class FormSearchRIComponent implements OnInit {
   formRI: NgForm;
   captcha:boolean;
   formObj:FormRI;
-  
+
 
   InformalPerson: InformalPerson = {documentNumber: '',
-  expedition: '',
-  documentType: 0};
+  expedition: new Date(),
+  documentType: ''};
+
 
   constructor( private documentTypeService: DocumentTypeService,private calendar: NgbCalendar,
     private informalRegistartion:InformalRegistrationService,
     private spinner: NgxSpinnerService,
-    private router: Router) { }
+    private router: Router,
+    private commonService: CommonService,
+    ) { 
+    }
 
   ngOnInit() {
     this.getAllDocuments();
@@ -48,23 +53,22 @@ export class FormSearchRIComponent implements OnInit {
   submit(form){
     if (this.formRI.valid && this.captcha) {
       let ngbDate = this.formRI.controls['expedition'].value;
-      let expeditionDate = new Date(ngbDate.year, ngbDate.month-1, ngbDate.day).toLocaleDateString();
+      let expeditionDate = new Date(ngbDate.year, ngbDate.month-1, ngbDate.day);
       this.InformalPerson.expedition = expeditionDate;
       this.spinner.show();
 
-      this.informalRegistartion.searchInformationIPGet(this.InformalPerson).subscribe(
+      this.informalRegistartion.searchInformationIP(this.InformalPerson).subscribe(
         res => {
+          console.log(res);
           this.formObj = res;
-          console.log(this.formObj);
+          this.commonService.sendFormRI(this.formObj);
+
           this.spinner.hide();
           this.router.navigate(['/FormRi/']);
-          console.log('ok');
         },
         (err: Response) => {
           this.spinner.hide();
-          this.router.navigate(['/FormRi/']);
-
-          console.log('fallo');
+          alert('Un error ha ocurrido, verifique su información');
         }
       );
     } else{
@@ -73,9 +77,7 @@ export class FormSearchRIComponent implements OnInit {
     }
   }
   resolved(captchaResponse: string, res) {
-    this.captcha = true;
-    console.log(`Resolved response token: ${captchaResponse}`);
-   
+    this.captcha = true;   
   }
 
 }

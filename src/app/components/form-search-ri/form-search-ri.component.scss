@@ -1,5 +1,8 @@
 .divformsearch {
-    padding: 10 pt;
+    padding-top: 10pt;
+    padding-left: 20%;
+    padding-right: 20%;
+    z-index: 3;
 }
 
 .error {
@@ -7,6 +10,7 @@
 }
 
 .btnRI {
+    margin-top: 10pt;
     background-color: #4D87C0;
     width: 20% !important;
 }
@@ -18,9 +22,12 @@
     .btnRI {
         width: 100% !important;
         text-align: center !important;
-        margin-bottom: 10pt;
     }
     .text-right {
         text-align: center !important;
+    }
+    .divformsearch {
+        padding-left: 10%;
+        padding-right: 10%;
     }
 }
