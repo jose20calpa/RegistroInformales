@@ -3,7 +3,7 @@
         <div class="form-group">
             <div class="row" *ngFor="let question of questions; let i = index">
                 <div [ngSwitch]="question.componentType" class="col-sm-12" [ngClass]="{ 'has-error': form.submitted  }">
-                    <label>{{i+1}}.{{question.statement}}</label>{{question.required==true?'*':''}}
+                    <label>{{i+1}}.{{question.componentType == 'locate'?'Departamento':question.statement}}</label>{{question.required==true?'*':''}}
                     <div *ngSwitchCase="'input'">
                         <input name="{{question.id}}" class="form-control" type="{{question.dataType}}"
                             [(ngModel)]="question.answer" #answer="ngModel" [required]="question.required" />
@@ -46,6 +46,7 @@
                                 {{department.desc_department}}</option>
                         </select>
                         <br>
+                        <label>{{question.statement}}</label>
                         <select class="form-control" name="{{question.id}}" [(ngModel)]="question.answer"
                             #answer="ngModel" [required]="question.required" [disabled]="selectedIdDepartment == null">
                             <option empty-option="" value="undefined" class="" selected>Seleccionar</option>
