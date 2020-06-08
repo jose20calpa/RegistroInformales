@@ -34,6 +34,7 @@ export class FormSearchRIComponent implements OnInit {
     private router: Router,
     private commonService: CommonService,
     ) { 
+      this.calendar.getToday();
     }
 
   ngOnInit() {

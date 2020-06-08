@@ -1,17 +1,21 @@
 @charset "utf-8";
 .footerCCB {
-    margin-top: 20pt;
-    margin-bottom: 20pt;
-    margin-right: 25%;
-    margin-left: 25%;
+    margin-top: 30pt;
+    margin-bottom: 40pt;
+    margin-right: 40%;
+    margin-left: 40%;
     border-width: 1px;
-    border-radius: 25px;
     text-align: center;
-    border-style: solid;
-    font-size: 20pt;
+    font-size: 10pt;
 }
 
 img {
     padding: 5pt;
     width: 30%;
+}
+
+@media (max-width: 500px) {
+    img {
+        width: 90%;
+    }
 }
