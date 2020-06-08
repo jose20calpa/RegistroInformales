@@ -32,6 +32,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import {  loadToken } from './functions/app-initializer';
 import { TokenInterceptor } from './functions/TokenInterceptor';
 import { AppConfigService } from './services/app-config.service';
+import { ModalComponent } from './components/commons/modal/modal.component';
 
 registerLocaleData(locales);
 
@@ -42,7 +43,7 @@ registerLocaleData(locales);
     AppComponent,
     HeaderComponent,
     FooterComponent,
-
+    ModalComponent,
     NotfoundComponent,
     InformalRegisterFormComponent,
     ErrorComponent,

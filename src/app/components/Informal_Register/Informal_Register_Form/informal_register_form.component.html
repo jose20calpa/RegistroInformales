@@ -13,7 +13,9 @@
                 </ng-template>
 
                 <div class="container">
-                    <app-section (guardarEventEmitter)="guardarRespuestas()" [questions]="section.questions" [idFinalSection]="formRI.sections.length" [municipalities]="municipalities" [departments]="departments"></app-section>
+                    <app-section (saveEventEmitter)="saveAnswers()" [questions]="section.questions"
+                        [idFinalSection]="formRI.sections.length" [municipalities]="municipalities"
+                        [departments]="departments"></app-section>
                     <br /><br />
 
                     <div class="btn-group">
@@ -23,8 +25,16 @@
                 </div>
             </aw-wizard-step>
         </aw-wizard>
+        <ngx-spinner bdColor="rgba(244,244,244,1)" size="large" color="#4D87C0" type="ball-scale-multiple"
+            zIndex="99999">
+            <p style="font-size: 20px; color:black">Un momento por favor</p>
+        </ngx-spinner>
+
+        <app-modal #appModal (nextPage)="nextPage($event)"></app-modal>
         <app-footer></app-footer>
 
     </div>
+
+
 
 </ng-sidebar-container>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormIRServiceService } from 'src/app/services/form-irservice.service';
 import { FormRI } from 'src/app/models/form-ri';
 import { Department } from 'src/app/models/Department';
@@ -6,6 +6,10 @@ import { Municipality } from 'src/app/models/Municipality';
 import { DepartmentService } from 'src/app/services/department.service';
 import { MunicipalityService } from 'src/app/services/municipality.service';
 import { CommonService } from '../../../services/common.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ModalComponent } from '../../commons/modal/modal.component';
+import { ModalService } from 'src/app/services/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-interface',
@@ -16,14 +20,18 @@ export class InformalRegisterFormComponent implements OnInit {
 
   formRI: FormRI;
   departments: Department[];
-  municipalities: Municipality[];
-  paso = 0;
-  _opened = false;
+  municipalities: Municipality[];  
   cityList: Array<any>;
+
+  @ViewChild('appModal', null) modalComponent: ModalComponent;
+
   constructor(private formIRService: FormIRServiceService,
     private deparmentService: DepartmentService,
     private municipalityService: MunicipalityService,
-    private CommonService: CommonService) {
+    private CommonService: CommonService,
+    private spinner: NgxSpinnerService,
+    private modalService: ModalService,
+    private router: Router,) {
 
   }
 
@@ -34,16 +42,6 @@ export class InformalRegisterFormComponent implements OnInit {
     this.getFormRIs();  
   }
 
-  public getForm() {
-    this.formIRService.getFormIR().subscribe(
-      (res: FormRI) => {
-        this.formRI = res;
-      },
-      err => {
-        console.log("Ha ocurrido un error intente mas tarde");
-      }
-    );;
-  }
 
   private getDepartments() {
     this.deparmentService.getAllDepartments().subscribe(
@@ -57,8 +55,7 @@ export class InformalRegisterFormComponent implements OnInit {
     )
   }
 
-  getFormRIs() {
-    console.log('aqui form');
+  getFormRIs() {    
     this.formRI =  this.CommonService.formRi;
   }
 
@@ -66,8 +63,7 @@ export class InformalRegisterFormComponent implements OnInit {
 
     this.municipalityService.getAllMunicipalities().subscribe(
       (res: any) => {
-        this.municipalities = res;
-        console.log(this.municipalities);
+        this.municipalities = res;        
       },
       err => {
         console.log("Ha ocurrido un error intente mas tarde");
@@ -76,20 +72,19 @@ export class InformalRegisterFormComponent implements OnInit {
 
   }
 
-  public guardarRespuestas() {
-
+  public saveAnswers() {
+    this.modalService.register(this.modalComponent);
     var formRIClone = Object.assign({}, this.formRI);
     formRIClone = this.removeValuesFromObject(formRIClone);
-    console.log("formRIClone: ");
-    console.log(formRIClone)
-    console.log("formRI: ");
-    console.log(this.formRI)
-    this.formIRService.guardarRespuestas(formRIClone).subscribe(
+    this.spinner.show();
+    this.formIRService.saveAnswers(formRIClone).subscribe(
       res => {
-        console.log("Sucessfull")
+        this.spinner.hide();
+        this.showDialog('Alerta', 'Se ha completado la solicitud', true);
       },
       (err: Response) => {
-        console.log("Error : " + err);
+        this.spinner.hide();
+        this.showDialog('Error', 'No fue posible realizar la solicitud', false);
       }
 
     )
@@ -112,5 +107,20 @@ export class InformalRegisterFormComponent implements OnInit {
     });
     return obj;
   }
+
+  showDialog(title: string, message: string, reload: boolean) {
+    this.modalService.show(title, message, reload)
+      .then((res) => {
+      })
+      .catch((err) => {
+      });
+  }
+
+  nextPage(event) {
+    if (event) {      
+      this.router.navigate(['', ]);             
+    }
+  }
+
 
 }

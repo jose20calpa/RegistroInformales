@@ -1,14 +1,13 @@
 <div class="container ">
-    <form #formPayer="ngForm">
+    <form #form="ngForm">
         <div class="form-group">
-            <div class="row" *ngFor="let question of questions">
-                <div [ngSwitch]="question.componentType" class="col-sm-12"
-                    [ngClass]="{ 'has-error': formPayer.submitted  }">
-                    <label>{{question.statement}}</label>
+            <div class="row" *ngFor="let question of questions; let i = index">
+                <div [ngSwitch]="question.componentType" class="col-sm-12" [ngClass]="{ 'has-error': form.submitted  }">
+                    <label>{{i+1}}.{{question.statement}}</label>{{question.required==true?'*':''}}
                     <div *ngSwitchCase="'input'">
                         <input name="{{question.id}}" class="form-control" type="{{question.dataType}}"
                             [(ngModel)]="question.answer" #answer="ngModel" [required]="question.required" />
-                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || form.submitted)"
                             class="alert alert-danger">
                             Este campo es obligatorio
                         </div>
@@ -16,11 +15,11 @@
                     <div *ngSwitchCase="'list'">
                         <select class="form-control" name="{{question.id}}" [(ngModel)]="question.answer"
                             #answer="ngModel" [required]="question.required">
-                            <option empty-option="" value="undefined" class="">Seleccionar</option>
+                            <option empty-option="" value="undefined" class="" selected>Seleccionar</option>
                             <option *ngFor="let option of question.options" value="{{option.id}}">
                                 {{option.val}}</option>
                         </select>
-                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || form.submitted)"
                             class="alert alert-danger">
                             Este campo es obligatorio
                         </div>
@@ -32,7 +31,7 @@
                                 [(ngModel)]="question.answer" #answer="ngModel" [required]="question.required" />
                             <label for="option.id">{{option.val}}</label>
                             <div *ngIf="last">
-                                <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                                <div *ngIf="answer.invalid && (answer.dirty || answer.touched || form.submitted)"
                                     class="alert alert-danger">
                                     Este campo es obligatorio
                                 </div>
@@ -42,20 +41,32 @@
                     <div *ngSwitchCase="'locate'">
                         <select class="form-control" name="selectedIdDepartment" [required]="question.required"
                             [(ngModel)]="selectedIdDepartment" #idDepartment="ngModel">
-                            <option empty-option="" value="undefined" class="">Seleccionar</option>
+                            <option empty-option="" value="undefined" class="" selected>Seleccionar</option>
                             <option *ngFor="let department of departments" value="{{department.id_department}}">
                                 {{department.desc_department}}</option>
                         </select>
                         <br>
                         <select class="form-control" name="{{question.id}}" [(ngModel)]="question.answer"
                             #answer="ngModel" [required]="question.required" [disabled]="selectedIdDepartment == null">
-                            <option empty-option="" value="undefined" class="">Seleccionar</option>
+                            <option empty-option="" value="undefined" class="" selected>Seleccionar</option>
                             <option *ngFor="let municipality of filterMunicipalities()"
                                 value="{{municipality.id_Municipality}}">
                                 {{municipality.desc_Municipality}}</option>
                         </select>
 
-                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || formPayer.submitted)"
+                        <div *ngIf="answer.invalid && (answer.dirty || answer.touched || form.submitted)"
+                            class="alert alert-danger">
+                            Este campo es obligatorio
+                        </div>
+
+                    </div>
+                    <div *ngSwitchCase="'check'">
+                        <div *ngFor="let option of question.options; let last = last">
+                            <input type="checkbox"
+                                (change)="onChangeText(question.id ,option.id, $event.target.checked)">
+                            {{option.val}}<br>
+                        </div>
+                        <div *ngIf="!isAtleastOneItemSelected(question.required,question.answer,form.submitted) && form.submitted"
                             class="alert alert-danger">
                             Este campo es obligatorio
                         </div>
@@ -65,7 +76,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-rounded btn-flat" (click)="submit(formPayer)">Guardar
+                    <button type="submit" class="btn btn-rounded btn-flat" (click)="submit(form)">Guardar
                         información </button>
                 </div>
             </div>

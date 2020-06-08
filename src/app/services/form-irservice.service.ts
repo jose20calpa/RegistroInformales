@@ -13,12 +13,9 @@ export class FormIRServiceService {
   private BASE_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
-  getFormIR(): Observable<FormRI> {
-    return this.http.get<FormRI>('assets/config.json');
-  }
-
-  guardarRespuestas(formRI:FormRI):Observable<any>{
-    return this.http.post<any>(this.BASE_URL + '/form/save-responses',formRI).pipe(retry(2));
+  
+  saveAnswers(formRI:FormRI):Observable<any>{
+    return this.http.put<any>(this.BASE_URL + '/form/save-responses',formRI).pipe(retry(2));
   }
 
 }

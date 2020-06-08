@@ -24,41 +24,54 @@ export class SectionComponent implements OnInit {
   departments: Department[] = [];
 
   @Output()
-  guardarEventEmitter: EventEmitter<Object> = new EventEmitter();
+  saveEventEmitter: EventEmitter<Object> = new EventEmitter();
 
   selectedIdDepartment: string;
-  
+
 
   constructor(private wizard: WizardComponent) { }
 
   ngOnInit() {
-    console.log("minicipios: " );
-    console.log(this.municipalities );
-    console.log("departamentos: ");
-    console.log(this.departments );
+
   }
 
-
   submit(form) {
-    console.log("trying go to step 3")
-    console.log("current step: " + this.wizard.currentStep)
-    console.log("current step index: " + this.wizard.currentStepIndex)
-    console.log(this.questions);
     if (form.valid) {
       if (this.idFinalSection - 1 == this.wizard.currentStepIndex) {
-        console.log("Final step")
-        this.guardarEventEmitter.emit();
+        this.saveEventEmitter.emit();
       } else {
         this.wizard.disableNavigationBar = false;
         this.wizard.goToStep(this.wizard.currentStepIndex + 1);
       }
+    }
+  }
+
+  onChangeText(idQuestion: number, idOption: number, isChecked: boolean) {
+    if(this.questions.filter(question => question.id == idQuestion)[0].answer == null){
+      this.questions.filter(question => question.id == idQuestion)[0].answer = "";
+    }else if (isChecked && this.questions.filter(question => question.id == idQuestion)[0].answer != null &&
+      this.questions.filter(question => question.id == idQuestion)[0].answer != '') {
+      this.questions.filter(question => question.id == idQuestion)[0].answer += ",";
+    }
+    if (isChecked) {
+      this.questions.filter(question => question.id == idQuestion)[0].answer += idOption.toString();
+
     } else {
-      console.log("No es valido!")
+      this.questions.filter(question => question.id == idQuestion)[0].answer = this.questions.filter(question => question.id == idQuestion)[0].answer.replace("," + idOption.toString(), '')
+      this.questions.filter(question => question.id == idQuestion)[0].answer = this.questions.filter(question => question.id == idQuestion)[0].answer.replace(idOption.toString(), '')
     }
   }
 
   filterMunicipalities() {
     return (this.municipalities) ? this.municipalities.filter(municipality => municipality.id_Department == this.selectedIdDepartment) : this.municipalities;
+  }
+
+  isAtleastOneItemSelected(required: boolean, answer: any, submitted: boolean) {
+    if (required && answer == null || (answer != null && answer.length < 1)) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
 
