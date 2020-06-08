@@ -18,6 +18,9 @@ export class SectionComponent implements OnInit {
   idFinalSection: number;
 
   @Input()
+  actualSection: number;
+
+  @Input()
   municipalities: Municipality[] = [];
 
   @Input()
@@ -32,7 +35,7 @@ export class SectionComponent implements OnInit {
   constructor(private wizard: WizardComponent) { }
 
   ngOnInit() {
-
+    console.log("actual section: " + this.actualSection);
   }
 
   submit(form) {
@@ -47,9 +50,9 @@ export class SectionComponent implements OnInit {
   }
 
   onChangeText(idQuestion: number, idOption: number, isChecked: boolean) {
-    if(this.questions.filter(question => question.id == idQuestion)[0].answer == null){
+    if (this.questions.filter(question => question.id == idQuestion)[0].answer == null) {
       this.questions.filter(question => question.id == idQuestion)[0].answer = "";
-    }else if (isChecked && this.questions.filter(question => question.id == idQuestion)[0].answer != null &&
+    } else if (isChecked && this.questions.filter(question => question.id == idQuestion)[0].answer != null &&
       this.questions.filter(question => question.id == idQuestion)[0].answer != '') {
       this.questions.filter(question => question.id == idQuestion)[0].answer += ",";
     }

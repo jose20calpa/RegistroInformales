@@ -3,7 +3,7 @@
         <app-header></app-header>
         <aw-wizard [awNavigationMode] navigateForward="visited" navBarLayout="large-filled-symbols">
 
-            <aw-wizard-step *ngFor="let section of formRI.sections; let first = first;">
+            <aw-wizard-step *ngFor="let section of formRI.sections; let first = first;let i = index;">
 
                 <ng-template awWizardStepSymbol>
                     <i [ngClass]="{'fas fa-circle':paso==2}"></i>
@@ -15,7 +15,7 @@
                 <div class="container">
                     <app-section (saveEventEmitter)="saveAnswers()" [questions]="section.questions"
                         [idFinalSection]="formRI.sections.length" [municipalities]="municipalities"
-                        [departments]="departments"></app-section>
+                        [departments]="departments" [actualSection]="i"></app-section>
                     <br /><br />
 
                     <div class="btn-group">

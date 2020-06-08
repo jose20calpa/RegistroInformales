@@ -76,8 +76,13 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-rounded btn-flat" (click)="submit(form)">Guardar
-                        información </button>
+                    <button type="submit" class="btn btn-rounded btn-flat" (click)="submit(form)">
+                        <ng-template [ngIf]="idFinalSection-1 == actualSection" [ngIfElse]="isNotFinal">Guardar
+                        </ng-template>
+                        <ng-template #isNotFinal>
+                            Continuar
+                        </ng-template>
+                    </button>
                 </div>
             </div>
         </div>
