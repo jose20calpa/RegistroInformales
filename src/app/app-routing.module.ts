@@ -5,10 +5,11 @@ import { NotfoundComponent } from './components/commons/notfound/notfound.compon
 import { InformalRegisterFormComponent } from './components/Informal_Register/Informal_Register_Form/informal_register_form.component';
 import { FormSearchRIComponent } from './components/form-search-ri/form-search-ri.component';
 
+import{ActivateFormGuard} from './guards/activate-form.guard';
 
 const routes: Routes = [
 { path: '',component:FormSearchRIComponent},
-{ path: 'FormRi',component:InformalRegisterFormComponent},
+{ path: 'FormRi',component:InformalRegisterFormComponent,canActivate:[ActivateFormGuard]},
 
 { path: 'notfound',component:FormSearchRIComponent}];
 
