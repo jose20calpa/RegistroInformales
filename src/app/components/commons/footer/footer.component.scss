@@ -1,153 +1,17 @@
 @charset "utf-8";
-
-/* CSS Document Servicios virtuales CCB y CAC */
-
-
-/*Fuente TradeGothic*/
-
-.TradeGothicLTPro-LightObl {
-    font-family: TradeGothicLTPro-LightObl;
-    font-weight: normal;
-    font-style: normal;
-}
-
-.TradeGothic-normal-italic {
-    font-family: TradeGothic;
-    font-weight: normal;
-    font-style: italic;
-}
-
-.TradeGothic-bold-italic {
-    font-family: TradeGothic;
-    font-weight: bold;
-    font-style: italic;
-}
-
-.TradeGothic-normal-normal {
-    font-family: TradeGothic;
-    font-weight: normal;
-    font-style: normal;
-}
-
-.TradeGothicLTPro-Light {
-    font-family: TradeGothicLTPro-Light;
-    font-weight: normal;
-    font-style: normal;
-}
-
-.TradeGothic-bold-normal {
-    font-family: TradeGothic;
-    font-weight: bold;
-    font-style: normal;
-}
-
-footer {
-    margin-bottom: 10pt;
-    padding: 10pt;
-}
-
-
-/*Estilos generales marco de presentación*/
-
-.plantilla-container {
-    width: 90%;
-    margin: 0px auto;
-    padding: 0px;
-}
-
-.espacio15 {
-    font-size: 15px;
-    height: 15px;
-    clear: both
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background-color: #d5d4d4;
-    display: block;
-}
-
-.container-contacto {
-    float: left;
-    margin-right: 16px;
-}
-
-.titulo-contacto {
-    font-size: 16px;
-    color: #222222;
-    font-weight: bold;
-}
-
-.container-contacto-linea {
-    float: left;
-    border-left: 1px solid #d4d3d3;
-}
-
-.container-contacto-atencion {
-    margin-left: 16px;
-}
-
-.texto-contacto {
-    font-size: 14px;
-    color: #545152;
-}
-
-.texto-contacto a {
-    text-decoration: none;
-    margin-right: 8px;
-    color: #545152;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.texto-llamada {
-    margin-left: 8px;
-    color: #545152;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.texto-llamada a {
-    font-size: 14px;
-    margin-left: 4px;
-    color: #545152;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.container-creditos {
-    background-color: #4c4849;
-    padding: 10px;
-}
-
-.container-creditos-texto {
-    margin: 0 auto;
-    padding: 15px;
+.footerCCB {
+    margin-top: 20pt;
+    margin-bottom: 20pt;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-width: 1px;
+    border-radius: 25px;
     text-align: center;
+    border-style: solid;
+    font-size: 20pt;
 }
 
-.container-creditos-texto a {
-    font-size: 12px;
-    color: #949293;
-    text-decoration: none;
-    margin-right: 8px;
-}
-
-.copy {
-    font-size: 11px;
-    color: #949293;
-    margin-left: 16px;
-    text-decoration: none;
-}
-
-.container-servicios {
-    padding: 15px;
-}
-
-.link-cree a {
-    font-size: 16px;
-    color: #D01648;
-    text-decoration: none;
+img {
+    padding: 5pt;
+    width: 30%;
 }
