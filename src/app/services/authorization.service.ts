@@ -17,7 +17,7 @@ export class AuthorizationService {
   }
 
   authenticateApplication() {
-     return this.http.get<AutenticationResponse>(this.apiEndPoint + env.auth.token);
+     return this.http.get<AutenticationResponse>(this.apiEndPoint + '/security');
   }
   seeResources(){
     this.authorize = true;

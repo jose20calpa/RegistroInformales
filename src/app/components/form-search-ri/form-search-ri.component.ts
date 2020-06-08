@@ -80,7 +80,7 @@ export class FormSearchRIComponent implements OnInit {
 
     }
   }
-  resolved(captchaResponse: string, res) {
+  resolved(captchaResponse: string) {
     this.captcha = true;   
   }
 
