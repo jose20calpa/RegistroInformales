@@ -70,7 +70,7 @@ export class SectionComponent implements OnInit {
   }
 
   isAtleastOneItemSelected(required: boolean, answer: any, submitted: boolean) {
-    if (required && answer == null || (answer != null && answer.length < 1)) {
+    if (required && (answer == null || answer == '' )) {
       return false;
     } else {
       return true;
