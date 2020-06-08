@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { FormRI } from 'src/app/models/form-ri';
 import { CommonService } from 'src/app/services/common.service';
+import { AuthorizationService } from '../../services/authorization.service';
 
 @Component({
   selector: 'app-form-search-ri',
@@ -17,12 +18,12 @@ import { CommonService } from 'src/app/services/common.service';
 export class FormSearchRIComponent implements OnInit {
   documentsTypeList: Array<any>;
   @ViewChild('formRI', null)
-  formRI: NgForm;
-  captcha:boolean;
-  formObj:FormRI;
+  public formRI: NgForm;
+  public captcha:boolean;
+  public formObj:FormRI;
 
 
-  InformalPerson: InformalPerson = {documentNumber: '',
+  public InformalPerson: InformalPerson = {documentNumber: '',
   expedition: new Date(),
   documentType: ''};
 
@@ -33,7 +34,9 @@ export class FormSearchRIComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router: Router,
     private commonService: CommonService,
+    private authorizationService:AuthorizationService 
     ) { 
+      this.calendar.getToday();
     }
 
   ngOnInit() {
@@ -64,6 +67,7 @@ export class FormSearchRIComponent implements OnInit {
           this.commonService.sendFormRI(this.formObj);
 
           this.spinner.hide();
+          this.authorizationService.seeResources();
           this.router.navigate(['/FormRi/']);
         },
         (err: Response) => {
@@ -76,7 +80,7 @@ export class FormSearchRIComponent implements OnInit {
 
     }
   }
-  resolved(captchaResponse: string, res) {
+  resolved(captchaResponse: string) {
     this.captcha = true;   
   }
 
